@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:17.4-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: definex
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - definex-network
+
+  task-management:
+    image: muazmemis/task-management
+    pull_policy: always
+    container_name: task-management
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/definex
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: password123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      JWT_EXPIRATION: 86400000
+      FILE_UPLOAD_DIR: /home/ubuntu/workspace/TaskManagement
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - definex-network
+
+volumes:
+  postgres_data:
+
+networks:
+  definex-network:
