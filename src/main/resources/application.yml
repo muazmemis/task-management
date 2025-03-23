@@ -14,4 +14,4 @@ application:
       expiration: ${JWT_EXPIRATION:86400000}
 
 file:
-  upload-dir: /home/muaz/Desktop/TaskManagement
+  upload-dir: /home/muaz/Desktop/task-management
