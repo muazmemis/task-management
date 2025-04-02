@@ -97,7 +97,7 @@ mvn test
 ## API Documentation
 
 - Local: [Link](http://localhost:8080/swagger-ui.html)
-- AWS EC2: [Link](http://localhost:8080/swagger-ui.html)
+- AWS EC2: [Link](http://13.61.4.29:8080/swagger-ui.html)
 
 ## 📝 License
 
